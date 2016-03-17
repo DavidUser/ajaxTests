@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Ajax Test</title>
+		<script src="ajaxFunctions.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+			function setMessageUsingDOM(message) {
+				var userMessageElement = document.getElementById("userIdMessage");
+				var messageText;
+
+				if (message == "false") {
+					userMessageElement.style.color = "red";
+					messageText = "Invalid User Id";
+				} else {
+					userMessageElement.style.color = "green";
+					messageText = "Valid User Id";
+				}
+
+				var messageBody = document.createTextNode(messageText);
+
+				if (userMessageElement.childNodes[0])
+					userMessageElement.replaceChild(messageBody,
+							userMessageElement.childNodes[0]);
+				else
+					userMessageElement.appendChild(messageBody);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="userIdMessage"></div>
+		<input type="text" name="id" id="userid" value="" size="20" onkeyup="validateUserId();">
+	</body>
+</html>
